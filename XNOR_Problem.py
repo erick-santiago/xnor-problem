@@ -1,9 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[38]:
-
-
 # DATA GENERATION
 import numpy as np
 from matplotlib import pyplot as plt
@@ -55,10 +49,6 @@ plt.grid(True)
 plt.show()
         
 
-
-# In[39]:
-
-
 #TRAIN DATASET ESTABLISHMENT 
 x_train = np.empty((N*2,2))  #training dataset
 
@@ -105,9 +95,6 @@ print(y_train[255])  #sanity check
 print(len(y_train))
 
 
-# In[40]:
-
-
 # NETWORK SETUP AND TRAINING
 from keras.models import Sequential
 from keras.layers.core import Dense
@@ -124,16 +111,8 @@ model.compile(loss='binary_crossentropy',
 
 history = model.fit(x_train, y_train, batch_size=4, epochs=15, verbose=2)
 
-
-# In[41]:
-
-
 # list metrics collected in history
 print(history.history.keys())
-
-
-# In[42]:
-
 
 # Plot accuracy and loss vs epoch
 plt.plot(history.history['accuracy'])
@@ -148,9 +127,6 @@ plt.ylabel('Loss')
 plt.xlabel('Epoch')
 plt.legend(['Train'], loc='upper right')
 plt.show()
-
-
-# In[43]:
 
 
 # TEST DATASET ESTABLISHMENT
@@ -239,19 +215,10 @@ print(z_labels[255])  #sanity check
 print(len(z_labels))
 
 
-# In[44]:
-
-
 # MODEL ACCURACY
 
 # Evaluate the model on the test data 
 print("Evaluate on test data")
 results = model.evaluate(z_test, z_labels, batch_size=4)
 print("test loss, test acc:", results)
-
-
-# In[ ]:
-
-
-
 
